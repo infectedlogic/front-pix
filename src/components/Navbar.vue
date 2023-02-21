@@ -11,7 +11,7 @@
       </v-col>
     </v-row>
     <v-spacer></v-spacer>
-    <p class="mr-5 font-weight-bold"> Balance :  {{ getBalance }}</p>
+    <p class="mr-5 font-weight-bold"> Balance :  {{ loading ? 'Loading' : getBalance }} R$</p>
     <v-btn  class="mr-5" color="white" @click = " () => logOut()"><v-icon color="white" size="25">mdi-logout</v-icon>Logout</v-btn>
   </v-app-bar>
     
@@ -36,15 +36,14 @@
 
 export default {
   name: 'HelloWorld',
-  computed:{
-    getBalance(){
-     const balance = localStorage.getItem('balance');
-     return balance ?  balance : 0;
-    }
-  },
  data(){
   return {
     loggedIn : null,
+  }
+ },
+ computed:{
+  getBalance(){
+    return this.$store.getters.getBalance
   }
  },
  methods :{
@@ -52,6 +51,9 @@ export default {
   localStorage.clear();
   this.$router.push('/')
  }
+},
+props:{
+  loading : Boolean,
 }
 }
 </script>
