@@ -41,7 +41,7 @@ let balance = this.$store.getters.getNewBalance;
   paid_at: "2021-07-13T21:00:54.000Z",
   status: "PAID"
 }
-       fetch("https://angry-lime-fawn.cyclic.app:3003/webhook",{
+       fetch("https://angry-lime-fawn.cyclic.app/webhook",{
             method : 'POST',
             headers:{
                 'Content-Type' : 'application/json'
@@ -57,7 +57,7 @@ let balance = this.$store.getters.getNewBalance;
                 {   const newBalance = {
                     balance : balance  + this.oldBalance
                 }
-                    fetch("https://angry-lime-fawn.cyclic.app:3003/api/auth/me", {
+                    fetch("https://angry-lime-fawn.cyclic.app/api/auth/me", {
                         method : 'PATCH',
                         headers : {
                             "x-access-token" : localStorage.getItem("JWT_TOKEN"),
@@ -80,7 +80,7 @@ let balance = this.$store.getters.getNewBalance;
         })
     },
     findBalance(){
-        fetch("https://angry-lime-fawn.cyclic.app:3003/api/auth/me", {
+        fetch("https://angry-lime-fawn.cyclic.app/api/auth/me", {
                         method : 'GET',
                         headers : {
                             "x-access-token" : localStorage.getItem("JWT_TOKEN")

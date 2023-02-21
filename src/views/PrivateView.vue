@@ -97,7 +97,7 @@ export default{
     },
     findBalance(){
       this.loading = true;
-        fetch("https://angry-lime-fawn.cyclic.app:3003/api/auth/me", {
+        fetch("https://angry-lime-fawn.cyclic.app/api/auth/me", {
                         method : 'GET',
                         headers : {
                             "x-access-token" : localStorage.getItem("JWT_TOKEN")
